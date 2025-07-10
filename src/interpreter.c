@@ -19,12 +19,12 @@ static void set_environment(const char* name, int value)
 
     while (current)
     {
-        if (strcmp(current->name, name) == 0)  // ✅ names match
+        if (strcmp(current->name, name) == 0)  //  names match
         {
             current->value = value;
             return;
         }
-        current = current->next;  // ✅ move to next entry
+        current = current->next;  //  move to next entry
     }
 
     // Add new variable
