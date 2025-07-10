@@ -66,3 +66,41 @@ Here is an example of a small program written in this language:
 
 This program declares two variables x and y, performs arithmetic operations respecting operator precedence, and prints their values.
 
+Running this program
+
+    1.Tokenize and parse the source code into an AST (handled by your lexer and parser).
+
+    2.Interpret the AST:
+                        // Construct AST nodes (example in test_interpreter.c)
+                            ast_node* stmts[] = {
+                                    // let x = 10 + 5 * 2;
+                                    create_variable_declaration("x", 
+                                    create_binary_expression(op_add,
+                                    create_integer_literal(10),
+                                    create_binary_expression(op_mul,
+                                    create_integer_literal(5),
+                                    create_integer_literal(2)))),
+                                    // let y = x - 4 / 2;
+                                    create_variable_declaration("y", 
+                                    create_binary_expression(op_sub,
+                                    create_identifier("x"),
+                                    create_binary_expression(op_div,
+                                    create_integer_literal(4),
+                                    create_integer_literal(2)))),
+                                    // print(x);
+                                    create_print_statement("x"),
+                                    // print(y);
+                                    create_print_statement("y")
+                        };
+                                    interpret(stmts, 4);
+
+                        3.Output:
+                                   === Running Complex Interpreter Test ===
+
+                                   Test: complex expression and multiple statements
+                                   
+                                   Expected output: 20 18
+                                   
+                                   Actual output: 20 18
+
+            
